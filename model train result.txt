@@ -1,0 +1,114 @@
+PS D:\Inditronics\rushi> yolo detect train data=data.yaml model=yolov8n.pt epochs=10 imgsz=680     
+>> 
+New https://pypi.org/project/ultralytics/8.3.147 available 😃 Update with 'pip install -U ultralytics'
+Ultralytics 8.3.77 🚀 Python-3.13.0 torch-2.6.0+cpu CPU (11th Gen Intel Core(TM) i5-11320H 3.20GHz)
+engine\trainer: task=detect, mode=train, model=yolov8n.pt, data=data.yaml, epochs=10, time=None, patience=100, batch=16, imgsz=680, save=True, save_period=-1, cache=False, device=None, workers=8, project=None, name=train4, exist_ok=False, pretrained=True, optimizer=auto, verbose=True, seed=0, deterministic=True, single_cls=False, rect=False, cos_lr=False, close_mosaic=10, resume=False, amp=True, fraction=1.0, profile=False, freeze=None, multi_scale=False, overlap_mask=True, mask_ratio=4, dropout=0.0, val=True, split=val, save_json=False, save_hybrid=False, conf=None, iou=0.7, max_det=300, half=False, dnn=False, plots=True, source=None, vid_stride=1, stream_buffer=False, visualize=False, augment=False, agnostic_nms=False, classes=None, retina_masks=False, embed=None, show=False, save_frames=False, save_txt=False, save_conf=False, save_crop=False, show_labels=True, show_conf=True, show_boxes=True, line_width=None, format=torchscript, keras=False, optimize=False, int8=False, dynamic=False, simplify=True, opset=None, workspace=None, nms=False, lr0=0.01, lrf=0.01, momentum=0.937, weight_decay=0.0005, warmup_epochs=3.0, warmup_momentum=0.8, warmup_bias_lr=0.1, box=7.5, cls=0.5, dfl=1.5, pose=12.0, kobj=1.0, nbs=64, hsv_h=0.015, hsv_s=0.7, hsv_v=0.4, degrees=0.0, translate=0.1, scale=0.5, shear=0.0, perspective=0.0, flipud=0.0, fliplr=0.5, bgr=0.0, mosaic=1.0, mixup=0.0, copy_paste=0.0, copy_paste_mode=flip, auto_augment=randaugment, erasing=0.4, crop_fraction=1.0, cfg=None, tracker=botsort.yaml, save_dir=runs\detect\train4
+Overriding model.yaml nc=80 with nc=3
+
+                   from  n    params  module                                       arguments
+  0                  -1  1       464  ultralytics.nn.modules.conv.Conv             [3, 16, 3, 2]
+  1                  -1  1      4672  ultralytics.nn.modules.conv.Conv             [16, 32, 3, 2]
+  2                  -1  1      7360  ultralytics.nn.modules.block.C2f             [32, 32, 1, True]
+  3                  -1  1     18560  ultralytics.nn.modules.conv.Conv             [32, 64, 3, 2]
+  4                  -1  2     49664  ultralytics.nn.modules.block.C2f             [64, 64, 2, True]
+  5                  -1  1     73984  ultralytics.nn.modules.conv.Conv             [64, 128, 3, 2]
+  6                  -1  2    197632  ultralytics.nn.modules.block.C2f             [128, 128, 2, True]
+  7                  -1  1    295424  ultralytics.nn.modules.conv.Conv             [128, 256, 3, 2]
+  8                  -1  1    460288  ultralytics.nn.modules.block.C2f             [256, 256, 1, True]
+  9                  -1  1    164608  ultralytics.nn.modules.block.SPPF            [256, 256, 5]
+ 10                  -1  1         0  torch.nn.modules.upsampling.Upsample         [None, 2, 'nearest']
+ 11             [-1, 6]  1         0  ultralytics.nn.modules.conv.Concat           [1]
+ 12                  -1  1    148224  ultralytics.nn.modules.block.C2f             [384, 128, 1]
+ 13                  -1  1         0  torch.nn.modules.upsampling.Upsample         [None, 2, 'nearest']
+ 14             [-1, 4]  1         0  ultralytics.nn.modules.conv.Concat           [1]
+ 15                  -1  1     37248  ultralytics.nn.modules.block.C2f             [192, 64, 1]
+ 16                  -1  1     36992  ultralytics.nn.modules.conv.Conv             [64, 64, 3, 2]
+ 17            [-1, 12]  1         0  ultralytics.nn.modules.conv.Concat           [1]
+ 18                  -1  1    123648  ultralytics.nn.modules.block.C2f             [192, 128, 1]
+ 19                  -1  1    147712  ultralytics.nn.modules.conv.Conv             [128, 128, 3, 2]
+ 20             [-1, 9]  1         0  ultralytics.nn.modules.conv.Concat           [1]
+ 21                  -1  1    493056  ultralytics.nn.modules.block.C2f             [384, 256, 1]
+ 22        [15, 18, 21]  1    751897  ultralytics.nn.modules.head.Detect           [3, [64, 128, 256]]
+Model summary: 129 layers, 3,011,433 parameters, 3,011,417 gradients, 8.2 GFLOPs
+
+Transferred 319/355 items from pretrained weights
+Freezing layer 'model.22.dfl.conv.weight'
+WARNING ⚠️ imgsz=[680] must be multiple of max stride 32, updating to [704]
+train: Scanning D:\Inditronics\rushi\dataset\labels\train... 40 images, 0 backgrounds, 0 corrupt: 100%|██████████| 40/4 
+train: New cache created: D:\Inditronics\rushi\dataset\labels\train.cache
+val: Scanning D:\Inditronics\rushi\dataset\labels\val... 10 images, 0 backgrounds, 0 corrupt: 100%|██████████| 10/10 [0 
+val: New cache created: D:\Inditronics\rushi\dataset\labels\val.cache
+Plotting labels to runs\detect\train4\labels.jpg... 
+optimizer: 'optimizer=auto' found, ignoring 'lr0=0.01' and 'momentum=0.937' and determining best 'optimizer', 'lr0' and 'momentum' automatically... 
+optimizer: AdamW(lr=0.001429, momentum=0.9) with parameter groups 57 weight(decay=0.0), 64 weight(decay=0.0005), 63 bias(decay=0.0)
+Image sizes 704 train, 704 val
+Using 0 dataloader workers
+Logging results to runs\detect\train4
+Starting training for 10 epochs...
+Closing dataloader mosaic
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+       1/10         0G      2.319      3.927       2.55         20        704: 100%|██████████| 3/3 [00:21<00:00,  7.09
+                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 100%|██████████| 1/1 [00:03<0
+                   all         10         20     0.0135          1      0.077     0.0278
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+       2/10         0G      1.852      3.674      2.237         18        704: 100%|██████████| 3/3 [00:17<00:00,  5.87
+                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 100%|██████████| 1/1 [00:02<0
+                   all         10         20     0.0129          1      0.378      0.176
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+       3/10         0G      1.484      3.174      1.907         18        704: 100%|██████████| 3/3 [00:17<00:00,  5.78
+                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 100%|██████████| 1/1 [00:02<0
+                   all         10         20     0.0138          1      0.988      0.488
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+       4/10         0G      1.402      2.839      1.689         21        704: 100%|██████████| 3/3 [00:17<00:00,  5.73
+                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 100%|██████████| 1/1 [00:02<0 
+                   all         10         20     0.0169          1      0.985       0.51
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+       5/10         0G      1.158      2.285      1.561         20        704: 100%|██████████| 3/3 [00:17<00:00,  5.74
+                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 100%|██████████| 1/1 [00:02<0 
+                   all         10         20     0.0196          1      0.988      0.424
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+       6/10         0G      1.114      2.035      1.572         18        704: 100%|██████████| 3/3 [00:17<00:00,  5.77
+                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 100%|██████████| 1/1 [00:02<0 
+                   all         10         20     0.0216          1       0.99      0.399
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+       7/10         0G      1.088      1.816      1.506         19        704: 100%|██████████| 3/3 [00:17<00:00,  5.86
+                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 100%|██████████| 1/1 [00:02<0 
+                   all         10         20     0.0245          1      0.986      0.405
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+       8/10         0G      1.039      1.708      1.463         22        704: 100%|██████████| 3/3 [00:21<00:00,  7.11
+                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 100%|██████████| 1/1 [00:02<0 
+                   all         10         20     0.0264          1      0.995      0.455
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+       9/10         0G     0.9583      1.672      1.456         18        704: 100%|██████████| 3/3 [00:24<00:00,  8.27
+                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 100%|██████████| 1/1 [00:04<0 
+                   all         10         20     0.0282          1      0.995      0.565
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+      10/10         0G     0.9461      1.583      1.443         20        704: 100%|██████████| 3/3 [00:32<00:00, 10.67
+                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 100%|██████████| 1/1 [00:04<0
+                   all         10         20      0.247          1      0.995      0.593
+
+10 epochs completed in 0.066 hours.
+Optimizer stripped from runs\detect\train4\weights\last.pt, 6.3MB
+Optimizer stripped from runs\detect\train4\weights\best.pt, 6.3MB
+
+Validating runs\detect\train4\weights\best.pt...
+Ultralytics 8.3.77 🚀 Python-3.13.0 torch-2.6.0+cpu CPU (11th Gen Intel Core(TM) i5-11320H 3.20GHz)
+Model summary (fused): 72 layers, 3,006,233 parameters, 0 gradients, 8.1 GFLOPs
+                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 100%|██████████| 1/1 [00:04<0 
+                   all         10         20      0.247          1      0.995      0.593
+                 Track         10         20      0.247          1      0.995      0.593
+Speed: 5.7ms preprocess, 193.5ms inference, 0.0ms loss, 182.6ms postprocess per image
+Results saved to runs\detect\train4
+💡 Learn more at https://docs.ultralytics.com/modes/train
+VS Code: view Ultralytics VS Code Extension ⚡ at https://docs.ultralytics.com/integrations/vscode
+PS D:\Inditronics\rushi>
